@@ -25,7 +25,12 @@ public class Bird : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            audioSource.PlayOneShot(audioClipFly);
+
+            if (Time.timeScale == 1)
+            {
+                audioSource.PlayOneShot(audioClipFly);
+            }
+            
             rig.velocity = Vector2.up * speed;
         }  
     }
