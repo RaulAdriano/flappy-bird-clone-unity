@@ -5,6 +5,8 @@ using UnityEngine;
 public class Points : MonoBehaviour
 {
     public GameController controller;
+    public AudioSource audioSource;
+    public AudioClip audioClip;
 
     private void Start()
     {
@@ -13,6 +15,7 @@ public class Points : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D colisor)
     {
+        audioSource.PlayOneShot(audioClip);
         controller.score++;
         controller.scoreText.text = controller.score.ToString();
     }

@@ -9,6 +9,9 @@ public class Bird : MonoBehaviour
     private Rigidbody2D rig;
 
     public GameObject gameOver;
+    public AudioSource audioSource;
+    public AudioClip audioClipFly;
+    public AudioClip audioClipGameOver;
 
 
     // Start is called before the first frame update
@@ -22,6 +25,7 @@ public class Bird : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            audioSource.PlayOneShot(audioClipFly);
             rig.velocity = Vector2.up * speed;
         }  
     }
@@ -29,6 +33,7 @@ public class Bird : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D colisor)
     {
+        audioSource.PlayOneShot(audioClipGameOver);
         gameOver.SetActive(true);
         Time.timeScale = 0;
     }
